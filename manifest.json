@@ -1,6 +1,6 @@
 {
-  "name": "url blocker 0.1 ver",
-  "description" : "monitoring program",
+  "name": "Web shark 0.1 ver",
+  "description" : "Block your habitual web surfing",
   "version": "0.1",
   "manifest_version": 3,
   "action": {
