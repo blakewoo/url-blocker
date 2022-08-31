@@ -1,0 +1,9 @@
+body{
+    width: 300px;
+    height: 400px;
+}
+
+#contents_div{
+    width: 100%;
+    align-content: center;
+}
