@@ -1,9 +1,45 @@
+html{
+
+}
+
 body{
     width: 300px;
-    height: 400px;
+    height: 300px;
 }
 
 #contents_div{
     width: 100%;
     align-content: center;
+}
+
+.font-background{
+    margin-top: 10px;
+    padding-bottom: 10px;
+    background: white;
+    border: dashed black 4px;
+    text-align: center;
+}
+
+.shark-icon{
+    height: 80px;
+    width: 80px;
+    display: block;
+    margin: 0px auto;
+}
+
+.public-button{
+    border: none;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: white;
+}
+
+.public-button:hover{
+    cursor:pointer;
+    background-color: black;
+    color:white
+}
+
+.marginTop_8px{
+    margin-top: 8px;
 }
