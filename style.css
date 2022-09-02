@@ -7,6 +7,13 @@ body{
     height: 300px;
 }
 
+.url-list{
+    width: 90%;
+    height: 20%;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
 #contents_div{
     width: 100%;
     align-content: center;
@@ -28,7 +35,7 @@ body{
 }
 
 .public-button{
-    border: none;
+    border: 1px black solid;
     font-weight: bold;
     font-size: 12px;
     background-color: white;
@@ -43,3 +50,4 @@ body{
 .marginTop_8px{
     margin-top: 8px;
 }
+
