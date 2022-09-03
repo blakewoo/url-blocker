@@ -4,13 +4,15 @@
   "version": "0.1",
   "manifest_version": 3,
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "popup.html"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage",
+    "scripting"
   ],
   "background": {
-    "service_worker": "index.js"
+    "service_worker": "background.js"
   },
   "icons": {
     "16": "img/icon.png",

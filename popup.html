@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel='stylesheet' href='./style.css' />
+    <script src="popup.js"></script>
 </head>
 
 <body>
@@ -12,10 +13,14 @@
      <h1>
          Welcome to web shark!
      </h1>
-     <h2>
+     <h3>
          This program prevents useless web surfing.
-     </h2>
-     <input type="button" id="onOffButton" value="On">
+     </h3>
+     <input type="checkbox" id="onOffSwitch" hidden>
+     <label>ON/OFF</label>
+     <label for="onOffSwitch" class="toggleSwitch">
+         <span class="toggleButton"></span>
+     </label>
      <div class="url-input">
          <input type="text" id="urlInputTextbox" placeholder="https://example.com">
          <input type="button" id="urlInputButton" value="Add">
