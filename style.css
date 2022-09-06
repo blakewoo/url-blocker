@@ -99,3 +99,11 @@ body{
     left: calc(100% - 2.8rem);
     background: #fff;
 }
+
+.urlDeleteButton{
+    float: right;
+}
+.urlDeleteButton:hover{
+    cursor:pointer;
+    font-weight: bold;
+}

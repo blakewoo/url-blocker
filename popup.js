@@ -12,7 +12,7 @@ window.onload = async function () {
     let urlListDiv = document.getElementsByClassName("url-list")[0]
     let tempHtml = ""
     for(let i=0;i<targetUrls.length;i++) {
-        tempHtml += "<label>"+targetUrls[i]+"<label><br>"
+        tempHtml += "<div><label>"+targetUrls[i]+"</label><label class='urlDeleteButton'>X</label></div>"
     }
     urlListDiv.innerHTML += tempHtml
 
@@ -20,7 +20,7 @@ window.onload = async function () {
         let urlListDiv = document.getElementsByClassName("url-list")[0]
         let addUrl = document.getElementById("urlInputTextbox").value
 
-        urlListDiv.innerHTML += "<label>"+addUrl+"<label><br>"
+        urlListDiv.innerHTML += "<div><label>"+addUrl+"</label><label class='urlDeleteButton'>X</label></div>"
 
         targetUrls.push(addUrl)
         await setStorageData({urls:targetUrls})
