@@ -8,6 +8,10 @@
 <body>
  <div id="home_div">
      <div class="alarm-icon">
+         <input type="checkbox" id="onOffSwitch" hidden>
+         <label for="onOffSwitch" class="toggleSwitch">
+             <span class="toggleButton"></span>
+         </label>
          <img class="shark-icon" src="img/icon.png">
      </div>
      <h1>
@@ -16,11 +20,7 @@
      <h3>
          This program prevents useless web surfing.
      </h3>
-     <input type="checkbox" id="onOffSwitch" hidden>
-     <label>ON/OFF</label>
-     <label for="onOffSwitch" class="toggleSwitch">
-         <span class="toggleButton"></span>
-     </label>
+
      <div class="url-input">
          <input type="text" id="urlInputTextbox" placeholder="https://example.com">
          <input type="button" id="urlInputButton" value="Add">

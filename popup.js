@@ -7,6 +7,15 @@ window.onload = async function () {
         $toggle.classList.toggle('active');
     }
 
+    document.getElementById("onOffSwitch").addEventListener("click",async function (event) {
+        if(event.currentTarget.checked) {
+            await setStorageData({onOffType:true})
+        }
+        else {
+            await setStorageData({onOffType:false})
+        }
+    })
+
     targetUrls = (await findAll(["urls"])).urls
 
     let urlListDiv = document.getElementsByClassName("url-list")[0]

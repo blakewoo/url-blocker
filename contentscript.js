@@ -1,18 +1,24 @@
 (async function () {
+    let onOffFlag = (await findAll(["onOffType"])).onOffType
+    let alertFlag = (await findAll(["alertType"])).alertType
 
     // on/off 설정 넣을것
+    if(onOffFlag) {
+        if(alertFlag === "alert") {
+            let target = location.host
+            let filter = (await findAll(["urls"])).urls
+            for(let i=0;i<filter.length ;i++) {
+                if(target === filter[i]) {
+                    // 순수 리다이렉트
+                    // location.href = "https://google.com"
 
-    let target = location.host
-    let filter = (await findAll(["urls"])).urls
-    for(let i=0;i<filter.length ;i++) {
-        if(target === filter[i]) {
-            // 순수 리다이렉트
-            // location.href = "https://google.com"
 
-            // 알림 이후 리다이렉트
+                    // 알림 이후 리다이렉트
 
 
-            break;
+                    break;
+                }
+            }
         }
     }
 
