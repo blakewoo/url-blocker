@@ -9,7 +9,8 @@
   "permissions": [
     "activeTab",
     "storage",
-    "scripting"
+    "scripting",
+    "nativeMessaging"
   ],
   "content_scripts" : [
     {

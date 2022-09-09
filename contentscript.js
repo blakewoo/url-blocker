@@ -5,20 +5,22 @@
     // on/off 설정 넣을것
     if(onOffFlag) {
         if(alertFlag === "alert") {
-            let target = location.host
-            let filter = (await findAll(["urls"])).urls
-            for(let i=0;i<filter.length ;i++) {
-                if(target === filter[i]) {
-                    // 순수 리다이렉트
-                    // location.href = "https://google.com"
+            chrome.runtime.sendMessage({ action: "popup check" },async function () {
+                let target = location.host
+                let filter = (await findAll(["urls"])).urls
+                for(let i=0;i<filter.length ;i++) {
+                    if(target === filter[i]) {
+                        // 순수 리다이렉트
+                        // location.href = "https://google.com"
 
 
-                    // 알림 이후 리다이렉트
+                        // 알림 이후 리다이렉트
 
 
-                    break;
+                        break;
+                    }
                 }
-            }
+            })
         }
     }
 

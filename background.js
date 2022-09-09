@@ -12,6 +12,9 @@ chrome.runtime.onMessage.addListener(async function(request, sender, sendRespons
         console.log(sender)
         sendResponse({ message: "OK" });
     }
+    if(request.action === "popup check") {
+
+    }
 });
 
 chrome.tabs.onActivated.addListener(function(activeInfo) {
