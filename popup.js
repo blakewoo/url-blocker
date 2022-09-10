@@ -3,6 +3,9 @@ window.onload = async function () {
     const addUrl = document.getElementById("urlInputButton");
     let targetUrls = []
 
+    let checkedResult = (await findAll(["onOffType"])).onOffType
+    document.getElementById("onOffSwitch").checked = !!checkedResult;
+
     $toggle.onclick = () => {
         $toggle.classList.toggle('active');
     }
