@@ -10,10 +10,15 @@
                 let filter = (await findAll(["urls"])).urls
                 for(let i=0;i<filter.length ;i++) {
                     if(target === filter[i]) {
+
+                        chrome.tabs.query({active: true}, function(tabs){
+                            chrome.action.getPopup(tabs[0].id,function(){
+                                
+                            })
+                        })
+
                         // 순수 리다이렉트
                         location.href = "https://google.com"
-
-
                         // 알림 이후 리다이렉트
 
 

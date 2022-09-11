@@ -4,7 +4,15 @@ window.onload = async function () {
     let targetUrls = []
 
     let checkedResult = (await findAll(["onOffType"])).onOffType
-    document.getElementById("onOffSwitch").checked = !!checkedResult;
+    if (checkedResult) {
+        document.getElementsByClassName("toggleSwitch")[0].checked = true;
+        document.getElementsByClassName("toggleSwitch")[0].classList.add("active")
+    }
+    else {
+        document.getElementsByClassName("toggleSwitch")[0].checked = false;
+        document.getElementsByClassName("toggleSwitch")[0].classList.remove("active")
+    }
+
 
     $toggle.onclick = () => {
         $toggle.classList.toggle('active');
