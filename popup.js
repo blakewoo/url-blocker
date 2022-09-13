@@ -35,17 +35,50 @@ window.onload = async function () {
         tempHtml += "<div><label>"+targetUrls[i]+"</label><label class='urlDeleteButton'>X</label></div>"
     }
     urlListDiv.innerHTML += tempHtml
+    closeButtonEventBinder()
+
 
     addUrl.addEventListener('click', async function (e) {
         let urlListDiv = document.getElementsByClassName("url-list")[0]
         let addUrl = document.getElementById("urlInputTextbox").value
 
         urlListDiv.innerHTML += "<div><label>"+addUrl+"</label><label class='urlDeleteButton'>X</label></div>"
-
+        closeButtonEventBinder()
         targetUrls.push(addUrl)
         await setStorageData({urls:targetUrls})
     });
+
+    function closeButtonEventBinder() {
+        let closedButtonList = document.getElementsByClassName("urlDeleteButton")
+        for(let i=0;i<closedButtonList.length;i++) {
+            closedButtonList[i].removeEventListener("click",closeButtonEvent)
+            closedButtonList[i].addEventListener("click",closeButtonEvent)
+        }
+    }
+
+    async function closeButtonEvent(event) {
+        let target = event.currentTarget
+        let targetParent = target.parentNode;
+        let targetURL= targetParent.querySelector("label")
+
+        for(let i=0;i<targetUrls.length;i++) {
+            if(targetUrls[i] === targetURL.innerText) {
+                if(targetUrls.length === 1) {
+                    targetUrls=[]
+                }
+                else {
+                    targetUrls = targetUrls.splice(i, 1)
+                }
+                targetParent.remove();
+                break;
+            }
+        }
+
+        await setStorageData({urls:targetUrls})
+    }
 }
+
+
 
 async function setStorageData(value) {
     return new Promise(function (resolve, reject) {
