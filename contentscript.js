@@ -32,6 +32,108 @@ window.onload = function () {
     }
 
     function deleteAllPage() {
+        let style = "<style>"+
+            ".url-list{\n" +
+            "    width: 90%;\n" +
+            "    height: 20%;\n" +
+            "    overflow-y: scroll;\n" +
+            "    overflow-x: auto;\n" +
+            "}\n" +
+            "\n" +
+            "#contents_div{\n" +
+            "    width: 100%;\n" +
+            "    align-content: center;\n" +
+            "}\n" +
+            "\n" +
+            ".font-background{\n" +
+            "    margin-top: 10px;\n" +
+            "    padding-bottom: 10px;\n" +
+            "    background: white;\n" +
+            "    border: dashed black 4px;\n" +
+            "    text-align: center;\n" +
+            "}\n" +
+            "\n" +
+            ".shark-icon{\n" +
+            "    height: 80px;\n" +
+            "    width: 80px;\n" +
+            "    display: block;\n" +
+            "    margin: 0px auto;\n" +
+            "}\n" +
+            "\n" +
+            ".public-button{\n" +
+            "    border: 1px black solid;\n" +
+            "    font-weight: bold;\n" +
+            "    font-size: 12px;\n" +
+            "    background-color: white;\n" +
+            "}\n" +
+            "\n" +
+            ".public-button:hover{\n" +
+            "    cursor:pointer;\n" +
+            "    background-color: black;\n" +
+            "    color:white\n" +
+            "}\n" +
+            "\n" +
+            ".marginTop_8px{\n" +
+            "    margin-top: 8px;\n" +
+            "}\n" +
+            "\n" +
+            ".toggleSwitch {\n" +
+            "    width: 2rem;\n" +
+            "    height: 1rem;\n" +
+            "    display: block;\n" +
+            "    position: relative;\n" +
+            "    border-radius: 2rem;\n" +
+            "    background-color: #fff;\n" +
+            "    box-shadow: 0 0 1rem 3px rgba(0 0 0 / 15%);\n" +
+            "    cursor: pointer;\n" +
+            "}\n" +
+            "\n" +
+            "/* 토글 버튼 */\n" +
+            ".toggleSwitch .toggleButton {\n" +
+            "    /* 버튼은 토글보다 작아야함  */\n" +
+            "    width: 1rem;\n" +
+            "    height: 1rem;\n" +
+            "    position: absolute;\n" +
+            "    top: 50%;\n" +
+            "    left: .1rem;\n" +
+            "    transform: translateY(-50%);\n" +
+            "    border-radius: 50%;\n" +
+            "    background: #000000;\n" +
+            "}\n" +
+            "\n" +
+            "/* 체크박스가 체크될 시 변경되는 요소 */\n" +
+            "#toggle:checked ~ .toggleSwitch {\n" +
+            "    background: #000000;\n" +
+            "}\n" +
+            "\n" +
+            "#toggle:checked ~ .toggleSwitch .toggleButton {\n" +
+            "    /* 100% -> 끝위치, 2.8rem -> 버튼 크기 */\n" +
+            "    left: calc(100% - 1rem);\n" +
+            "    background: #fff;\n" +
+            "}\n" +
+            "\n" +
+            ".toggleSwitch, .toggleButton {\n" +
+            "    transition: all 0.2s ease-in;\n" +
+            "}\n" +
+            "\n" +
+            "/* checked 부분을 active란 클래스가 포함되어있는지 여부로 바꾸기 */\n" +
+            ".toggleSwitch.active {\n" +
+            "    background: #000000;\n" +
+            "}\n" +
+            "\n" +
+            ".toggleSwitch.active .toggleButton {\n" +
+            "    left: calc(100% - 1rem);\n" +
+            "    background: #fff;\n" +
+            "}\n" +
+            "\n" +
+            ".urlDeleteButton{\n" +
+            "    float: right;\n" +
+            "}\n" +
+            ".urlDeleteButton:hover{\n" +
+            "    cursor:pointer;\n" +
+            "    font-weight: bold;\n" +
+            "}" +"</style>"
+
         let insertionHtml = "<div id=\"contents_div\">\n" +
             "     <div class=\"alarm-icon\">\n" +
             "         <img class=\"shark-icon\" src=\"https://cdn-icons-png.flaticon.com/512/1922/1922881.png\">\n" +
@@ -54,7 +156,7 @@ window.onload = function () {
             "     <a style=\"font-size:4pt\" href=\"https://www.flaticon.com/kr/free-icons/\" title=\"상어 아이콘\">상어 아이콘  제작자: Freepik - Flaticon</a>\n" +
             " </div>"
         let parent = document.getElementsByTagName("body")[0];
-        // console.log(parent)
-        parent.innerHTML = insertionHtml;
+        parent.innerHTML = style
+        parent.innerHTML += insertionHtml;
     }
 }
