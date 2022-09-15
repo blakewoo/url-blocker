@@ -7,6 +7,7 @@ window.onload = function () {
         // on/off 설정 넣을것
         if(onOffFlag) {
             if(alertFlag === "alert") {
+                console.log("aaaaaa")
                 let target = location.host
                 let filter = (await findAll(["urls"])).urls
                 for(let i=0;i<filter.length ;i++) {
@@ -31,9 +32,9 @@ window.onload = function () {
     }
 
     function deleteAllPage() {
-        let insertionHtml = "<div id=\"contents_div\" style=\"display: none\">\n" +
+        let insertionHtml = "<div id=\"contents_div\">\n" +
             "     <div class=\"alarm-icon\">\n" +
-            "         <img class=\"shark-icon\" src=\"img/icon.png\">\n" +
+            "         <img class=\"shark-icon\" src=\"https://cdn-icons-png.flaticon.com/512/1922/1922881.png\">\n" +
             "     </div>\n" +
             "\n" +
             "     <div class=\"font-background\">\n" +
@@ -52,7 +53,8 @@ window.onload = function () {
             "     <br>\n" +
             "     <a style=\"font-size:4pt\" href=\"https://www.flaticon.com/kr/free-icons/\" title=\"상어 아이콘\">상어 아이콘  제작자: Freepik - Flaticon</a>\n" +
             " </div>"
-        let parent = document.getElementsByTagName("body");
-        parent.innerHtml += insertionHtml;
+        let parent = document.getElementsByTagName("body")[0];
+        // console.log(parent)
+        parent.innerHTML = insertionHtml;
     }
 }

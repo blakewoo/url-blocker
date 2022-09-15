@@ -18,7 +18,8 @@
         "http://*/*",
         "https://*/*"
       ],
-      "js": ["contentscript.js"]
+      "js": ["contentscript.js"],
+      "css": ["style.css"]
   }],
   "background": {
     "service_worker": "background.js"
