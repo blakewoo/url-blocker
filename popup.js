@@ -4,26 +4,23 @@ window.onload = async function () {
     let targetUrls = []
 
     let checkedResult = (await findAll(["onOffType"])).onOffType
-    if (checkedResult) {
+    if (checkedResult === true) {
         document.getElementsByClassName("toggleSwitch")[0].checked = true;
         document.getElementsByClassName("toggleSwitch")[0].classList.add("active")
     }
     else {
         document.getElementsByClassName("toggleSwitch")[0].checked = false;
-        document.getElementsByClassName("toggleSwitch")[0].classList.remove("active")
     }
-
-
     $toggle.onclick = () => {
         $toggle.classList.toggle('active');
     }
 
-    document.getElementById("onOffSwitch").addEventListener("click",async function (event) {
+    document.getElementsByClassName("toggleSwitch")[0].addEventListener("click",async function (event) {
         if(event.currentTarget.checked) {
-            await setStorageData({onOffType:true})
+            await setStorageData({onOffType:false})
         }
         else {
-            await setStorageData({onOffType:false})
+            await setStorageData({onOffType:true})
         }
     })
 

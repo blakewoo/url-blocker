@@ -9,11 +9,7 @@ chrome.runtime.onInstalled.addListener(async function (event) {
 
 chrome.runtime.onMessage.addListener(async function(request, sender, sendResponse) {
     if (request.action === "addUrl") {
-        console.log(sender)
         sendResponse({ message: "OK" });
-    }
-    if(request.action === "popup check") {
-
     }
 });
 

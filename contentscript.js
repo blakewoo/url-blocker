@@ -7,19 +7,18 @@ window.onload = function () {
         // on/off 설정 넣을것
         if(onOffFlag) {
             if(alertFlag === "alert") {
-                console.log("aaaaaa")
                 let target = location.host
                 let filter = (await findAll(["urls"])).urls
                 for(let i=0;i<filter.length ;i++) {
                     if(target === filter[i]) {
-                        deleteAllPage()
+                        repaintPage()
                         break;
                     }
                 }
             }
             else {
-                // 순수 리다이렉트
-                location.href = "https://google.com"
+                // 페이지 차단
+                deletePage()
             }
         }
 
@@ -31,7 +30,11 @@ window.onload = function () {
         })
     }
 
-    function deleteAllPage() {
+    function deletePage() {
+        let parent = document.getElementsByTagName("body")[0];
+        parent.innerHTML = ""
+    }
+    function repaintPage() {
         let style = "<style>"+
             ".url-list{\n" +
             "    width: 90%;\n" +
