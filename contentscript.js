@@ -43,8 +43,15 @@ window.onload = function () {
             "    overflow-x: auto;\n" +
             "}\n" +
             "\n" +
+            ".parent_div{" +
+            "position:relative"+
+            "}"+
             "#contents_div{\n" +
-            "    width: 100%;\n" +
+            "    position:absolute;\n"+
+            "    height : 300px;\n"+
+            "    width: 400px;\n" +
+            "    left:calc(50% - 150px);\n"+
+            "    top:100px;\n"+
             "    align-content: center;\n" +
             "}\n" +
             "\n" +
@@ -137,7 +144,7 @@ window.onload = function () {
             "    font-weight: bold;\n" +
             "}" +"</style>"
 
-        let insertionHtml = "<div id=\"contents_div\">\n" +
+        let insertionHtml = "<div class='parent_div'><div id=\"contents_div\">\n" +
             "     <div class=\"alarm-icon\">\n" +
             "         <img class=\"shark-icon\" src=\"https://cdn-icons-png.flaticon.com/512/1922/1922881.png\">\n" +
             "     </div>\n" +
@@ -157,9 +164,9 @@ window.onload = function () {
             "\n" +
             "     <br>\n" +
             "     <a style=\"font-size:4pt\" href=\"https://www.flaticon.com/kr/free-icons/\" title=\"상어 아이콘\">상어 아이콘  제작자: Freepik - Flaticon</a>\n" +
-            " </div>"
+            " </div></div>"
         let parent = document.getElementsByTagName("body")[0];
-        parent.innerHTML = style
+        parent.innerHTML += style
         parent.innerHTML += insertionHtml;
     }
 }
