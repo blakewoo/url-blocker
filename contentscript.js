@@ -1,28 +1,25 @@
-window.onload = function () {
+window.onload = async function () {
 
-    (async function () {
-        let onOffFlag = (await findAll(["onOffType"])).onOffType
-        let alertFlag = (await findAll(["alertType"])).alertType
+    let onOffFlag = (await findAll(["onOffType"])).onOffType
+    let alertFlag = (await findAll(["alertType"])).alertType
 
-        // on/off 설정 넣을것
-        if(onOffFlag) {
-            if(alertFlag === "alert") {
-                let target = location.host
-                let filter = (await findAll(["urls"])).urls
-                for(let i=0;i<filter.length ;i++) {
-                    if(target === filter[i]) {
-                        repaintPage()
-                        break;
-                    }
+    // on/off 설정 넣을것
+    if(onOffFlag) {
+        if(alertFlag === "alert") {
+            let target = location.host
+            let filter = (await findAll(["urls"])).urls
+            for(let i=0;i<filter.length ;i++) {
+                if(target === filter[i]) {
+                    repaintPage()
+                    break;
                 }
             }
-            else {
-                // 페이지 차단
-                deletePage()
-            }
         }
-
-    })()
+        else {
+            // 페이지 차단
+            deletePage()
+        }
+    }
 
     async function findAll(itemList) {
         return new Promise(function (resolve, reject) {
@@ -48,11 +45,15 @@ window.onload = function () {
             "}"+
             "#contents_div{\n" +
             "    position:absolute;\n"+
-            "    height : 300px;\n"+
-            "    width: 400px;\n" +
-            "    left:calc(50% - 150px);\n"+
-            "    top:100px;\n"+
+            "    top:0;\n"+
+            "    left:0;\n"+
+            "    z-index: 10000 !important;\n"+
+            "    height : 100%;\n"+
+            "    width: 100%;\n" +
+            "    background-color: white;\n"+
             "    align-content: center;\n" +
+            "    overflow: hidden;\n"+
+            "    padding-top: 300px;\n"+
             "}\n" +
             "\n" +
             ".font-background{\n" +
@@ -144,7 +145,7 @@ window.onload = function () {
             "    font-weight: bold;\n" +
             "}" +"</style>"
 
-        let insertionHtml = "<div class='parent_div'><div id=\"contents_div\">\n" +
+        let insertionHtml = "<div id=\"contents_div\">\n" +
             "     <div class=\"alarm-icon\">\n" +
             "         <img class=\"shark-icon\" src=\"https://cdn-icons-png.flaticon.com/512/1922/1922881.png\">\n" +
             "     </div>\n" +
@@ -164,9 +165,19 @@ window.onload = function () {
             "\n" +
             "     <br>\n" +
             "     <a style=\"font-size:4pt\" href=\"https://www.flaticon.com/kr/free-icons/\" title=\"상어 아이콘\">상어 아이콘  제작자: Freepik - Flaticon</a>\n" +
-            " </div></div>"
+            " </div>"
         let parent = document.getElementsByTagName("body")[0];
         parent.innerHTML += style
         parent.innerHTML += insertionHtml;
+        document.getElementsByTagName("html")
+
+
+        document.getElementById("yes_button").addEventListener("click",function (event) {
+            document.getElementById("contents_div").remove()
+        })
+
+        document.getElementById("no_button").addEventListener("click",function (event) {
+            window.history.back()
+        })
     }
 }
