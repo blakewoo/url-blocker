@@ -167,10 +167,8 @@ window.onload = async function () {
             "     <a style=\"font-size:4pt\" href=\"https://www.flaticon.com/kr/free-icons/\" title=\"상어 아이콘\">상어 아이콘  제작자: Freepik - Flaticon</a>\n" +
             " </div>"
         let parent = document.getElementsByTagName("body")[0];
-        parent.innerHTML += style
+        parent.innerHTML += style;
         parent.innerHTML += insertionHtml;
-        document.getElementsByTagName("html")
-
 
         document.getElementById("yes_button").addEventListener("click",function (event) {
             document.getElementById("contents_div").remove()
