@@ -1,6 +1,7 @@
 window.onload = async function () {
     const $toggle = document.querySelector(".toggleSwitch");
     const addUrl = document.getElementById("urlInputButton");
+    const selected = document.getElementById("settingSelect");
     let targetUrls = []
 
     let checkedResult = (await findAll(["onOffType"])).onOffType
@@ -14,6 +15,18 @@ window.onload = async function () {
     $toggle.onclick = () => {
         $toggle.classList.toggle('active');
     }
+
+    selected.addEventListener("change",async function (event) {
+        if(event.currentTarget.value === "block") {
+            await setStorageData({alertType:"alert"})
+        }
+        else if(event.currentTarget.value === "redirect") {
+            await setStorageData({alertType:"redirect"})
+        }
+        else {
+            await setStorageData({alertType:"block"})
+        }
+    })
 
     document.getElementsByClassName("toggleSwitch")[0].addEventListener("click",async function (event) {
         if(event.currentTarget.checked) {

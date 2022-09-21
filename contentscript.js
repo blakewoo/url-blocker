@@ -1,5 +1,4 @@
 window.onload = async function () {
-
     let onOffFlag = (await findAll(["onOffType"])).onOffType
     let alertFlag = (await findAll(["alertType"])).alertType
 
@@ -15,6 +14,9 @@ window.onload = async function () {
                 }
             }
         }
+        else if(alertFlag === "redirect") {
+            redirectPage();
+        }
         else {
             // 페이지 차단
             deletePage()
@@ -26,7 +28,9 @@ window.onload = async function () {
             chrome.storage.local.get(itemList, function (data) { resolve(data); })
         })
     }
-
+    function redirectPage() {
+        window.history.back()
+    }
     function deletePage() {
         let parent = document.getElementsByTagName("body")[0];
         parent.innerHTML = ""
