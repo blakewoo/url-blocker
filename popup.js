@@ -12,6 +12,20 @@ window.onload = async function () {
     else {
         document.getElementsByClassName("toggleSwitch")[0].checked = false;
     }
+
+    let blockedType =  (await findAll(["alertType"])).alertType
+    let seletedBox = document.getElementById("settingSelect")
+    console.log(blockedType)
+    if(blockedType==="alert") {
+        seletedBox.value= "block"
+    }
+    else if(blockedType==="redirect") {
+        seletedBox.value= "redirect"
+    }
+    else {
+        seletedBox.value= "remove"
+    }
+
     $toggle.onclick = () => {
         $toggle.classList.toggle('active');
     }
