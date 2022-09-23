@@ -1,6 +1,5 @@
 window.onload = async function () {
     const $toggle = document.querySelector(".toggleSwitch");
-    const addUrl = document.getElementById("urlInputButton");
     const selected = document.getElementById("settingSelect");
     let targetUrls = []
 
@@ -15,7 +14,7 @@ window.onload = async function () {
 
     let blockedType =  (await findAll(["alertType"])).alertType
     let seletedBox = document.getElementById("settingSelect")
-    console.log(blockedType)
+
     if(blockedType==="alert") {
         seletedBox.value= "block"
     }
@@ -62,7 +61,13 @@ window.onload = async function () {
     closeButtonEventBinder()
 
 
-    addUrl.addEventListener('click', async function (e) {
+    document.getElementById("urlInputTextbox").addEventListener("keyup",function (event) {
+        if (event.key === "Enter") {
+            document.getElementById("urlInputButton").click()
+        }
+    })
+
+    document.getElementById("urlInputButton").addEventListener('click', async function (e) {
         let urlListDiv = document.getElementsByClassName("url-list")[0]
         let addUrl = document.getElementById("urlInputTextbox").value
 
@@ -70,6 +75,7 @@ window.onload = async function () {
         closeButtonEventBinder()
         targetUrls.push(addUrl)
         await setStorageData({urls:targetUrls})
+        document.getElementById("urlInputTextbox").value = ""
     });
 
     function closeButtonEventBinder() {
