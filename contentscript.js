@@ -183,3 +183,16 @@ window.onload = async function () {
         })
     }
 }
+
+function annoyingRoutine () {
+    // something annoying logic
+    let baseArray = [1,2,3,4,5,6,7,8,9]
+    baseArray.sort(()=> Math.random() - 0.5)
+
+    for(let i=0;i<3;i++) {
+        // button generate
+    }
+
+    // button event binding
+    
+}

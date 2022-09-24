@@ -97,7 +97,7 @@ window.onload = async function () {
                     targetUrls=[]
                 }
                 else {
-                    targetUrls = targetUrls.splice(i, 1)
+                    targetUrls.splice(0,i, 1)
                 }
                 targetParent.remove();
                 break;
