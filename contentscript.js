@@ -189,10 +189,19 @@ function annoyingRoutine () {
     let baseArray = [1,2,3,4,5,6,7,8,9]
     baseArray.sort(()=> Math.random() - 0.5)
 
-    for(let i=0;i<3;i++) {
-        // button generate
-    }
+    let str = "<table>" +
+        "<tr><td class='annoyingButtonClass'>"+baseArray[0]+"</td><td class='annoyingButtonClass'>"+baseArray[1]+"</td><td class='annoyingButtonClass'>"+baseArray[2]+"</td></tr>" +
+        "<tr><td class='annoyingButtonClass'>"+baseArray[3]+"</td><td class='annoyingButtonClass'>"+baseArray[4]+"</td><td class='annoyingButtonClass'>"+baseArray[5]+"</td></tr>" +
+        "<tr><td class='annoyingButtonClass'>"+baseArray[6]+"</td><td class='annoyingButtonClass'>"+baseArray[7]+"</td><td class='annoyingButtonClass'>"+baseArray[8]+"</td></tr>" +
+        "</table>"
 
+    document.getElementById("contents_div").innerHTML = str
     // button event binding
-    
+
+    let annoyingButtons = document.getElementsByClassName("annoyingButtonClass")
+    for(let i=0;i<annoyingButtons.length;i++) {
+        annoyingButtons[i].addEventListener("click",function (event) {
+            // check logic
+        })
+    }
 }
