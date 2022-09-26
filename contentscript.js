@@ -1,6 +1,7 @@
 window.onload = async function () {
     let onOffFlag = (await findAll(["onOffType"])).onOffType
     let alertFlag = (await findAll(["alertType"])).alertType
+    let annoyingSet = new Set()
 
     // on/off 설정 넣을것
     if(onOffFlag) {
@@ -175,33 +176,42 @@ window.onload = async function () {
         parent.innerHTML += insertionHtml;
 
         document.getElementById("yes_button").addEventListener("click",function (event) {
-            document.getElementById("contents_div").remove()
+            annoyingSet = new Set()
+            annoyingRoutine()
         })
 
         document.getElementById("no_button").addEventListener("click",function (event) {
             window.history.back()
         })
     }
-}
 
-function annoyingRoutine () {
-    // something annoying logic
-    let baseArray = [1,2,3,4,5,6,7,8,9]
-    baseArray.sort(()=> Math.random() - 0.5)
 
-    let str = "<table>" +
-        "<tr><td class='annoyingButtonClass'>"+baseArray[0]+"</td><td class='annoyingButtonClass'>"+baseArray[1]+"</td><td class='annoyingButtonClass'>"+baseArray[2]+"</td></tr>" +
-        "<tr><td class='annoyingButtonClass'>"+baseArray[3]+"</td><td class='annoyingButtonClass'>"+baseArray[4]+"</td><td class='annoyingButtonClass'>"+baseArray[5]+"</td></tr>" +
-        "<tr><td class='annoyingButtonClass'>"+baseArray[6]+"</td><td class='annoyingButtonClass'>"+baseArray[7]+"</td><td class='annoyingButtonClass'>"+baseArray[8]+"</td></tr>" +
-        "</table>"
+    function annoyingRoutine () {
+        // something annoying logic
+        let baseArray = [1,2,3,4,5,6,7,8,9]
+        baseArray.sort(()=> Math.random() - 0.5)
 
-    document.getElementById("contents_div").innerHTML = str
-    // button event binding
+        let str = "<style>" +
+            "" +
+            "</style><table>" +
+            "<tr><td class='annoyingButtonClass'>"+baseArray[0]+"</td><td class='annoyingButtonClass'>"+baseArray[1]+"</td><td class='annoyingButtonClass'>"+baseArray[2]+"</td></tr>" +
+            "<tr><td class='annoyingButtonClass'>"+baseArray[3]+"</td><td class='annoyingButtonClass'>"+baseArray[4]+"</td><td class='annoyingButtonClass'>"+baseArray[5]+"</td></tr>" +
+            "<tr><td class='annoyingButtonClass'>"+baseArray[6]+"</td><td class='annoyingButtonClass'>"+baseArray[7]+"</td><td class='annoyingButtonClass'>"+baseArray[8]+"</td></tr>" +
+            "</table>"
 
-    let annoyingButtons = document.getElementsByClassName("annoyingButtonClass")
-    for(let i=0;i<annoyingButtons.length;i++) {
-        annoyingButtons[i].addEventListener("click",function (event) {
-            // check logic
-        })
+        document.getElementById("contents_div").innerHTML = str
+        // button event binding
+
+        let annoyingButtons = document.getElementsByClassName("annoyingButtonClass")
+        for(let i=0;i<annoyingButtons.length;i++) {
+            annoyingButtons[i].addEventListener("click",function (event) {
+                // check logic
+                annoyingSet.add(event.currentTarget.innerText)
+
+                if(annoyingSet.size === 9) {
+                    document.getElementById("contents_div").remove()
+                }
+            })
+        }
     }
 }
