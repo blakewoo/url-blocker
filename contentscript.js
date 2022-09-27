@@ -192,8 +192,21 @@ window.onload = async function () {
         baseArray.sort(()=> Math.random() - 0.5)
 
         let str = "<style>" +
-            "" +
-            "</style><table>" +
+            ".annoyingTable{" +
+            "margin: auto" +
+            "}" +
+            ".annoyingButtonClass{" +
+            "border: black 1px solid;" +
+            "width: 40px;" +
+            "height: 40px;" +
+            "text-align: center;" +
+            "}" +
+            ".annoyingButtonClass:hover{" +
+            "cursor:pointer;" +
+            "background-color: #000000;" +
+            "color:white;" +
+            "}" +
+            "</style><table class='annoyingTable'>" +
             "<tr><td class='annoyingButtonClass'>"+baseArray[0]+"</td><td class='annoyingButtonClass'>"+baseArray[1]+"</td><td class='annoyingButtonClass'>"+baseArray[2]+"</td></tr>" +
             "<tr><td class='annoyingButtonClass'>"+baseArray[3]+"</td><td class='annoyingButtonClass'>"+baseArray[4]+"</td><td class='annoyingButtonClass'>"+baseArray[5]+"</td></tr>" +
             "<tr><td class='annoyingButtonClass'>"+baseArray[6]+"</td><td class='annoyingButtonClass'>"+baseArray[7]+"</td><td class='annoyingButtonClass'>"+baseArray[8]+"</td></tr>" +
