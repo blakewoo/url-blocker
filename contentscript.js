@@ -2,6 +2,7 @@ window.onload = async function () {
     let onOffFlag = (await findAll(["onOffType"])).onOffType
     let alertFlag = (await findAll(["alertType"])).alertType
     let annoyingSet = new Set()
+    let prevNumber = 0
 
     // on/off 설정 넣을것
     if(onOffFlag) {
@@ -188,8 +189,36 @@ window.onload = async function () {
 
     function annoyingRoutine () {
         // something annoying logic
+        generateRandomMap()
+        mapEventBinder();
+    }
+
+    function mapEventBinder(){
+        // button event binding
+        let annoyingButtons = document.getElementsByClassName("annoyingButtonClass")
+        for(let i=0;i<annoyingButtons.length;i++) {
+            annoyingButtons[i].addEventListener("click",function (event) {
+                // check logic
+                console.log("Dddd")
+                console.log(event.currentTarget.innerText)
+
+                annoyingSet.add(event.currentTarget.innerText)
+                if(Number(event.currentTarget.innerText)- prevNumber !== 1) {
+                    generateRandomMap()
+                    prevNumber = 0;
+                }
+                prevNumber = event.currentTarget.innerText
+                if(annoyingSet.size === 9) {
+                    document.getElementById("contents_div").remove()
+                }
+            })
+        }
+    }
+
+    function generateRandomMap() {
         let baseArray = [1,2,3,4,5,6,7,8,9]
         baseArray.sort(()=> Math.random() - 0.5)
+        annoyingSet = new Set()
 
         let str = "<style>" +
             ".annoyingTable{" +
@@ -213,18 +242,6 @@ window.onload = async function () {
             "</table>"
 
         document.getElementById("contents_div").innerHTML = str
-        // button event binding
-
-        let annoyingButtons = document.getElementsByClassName("annoyingButtonClass")
-        for(let i=0;i<annoyingButtons.length;i++) {
-            annoyingButtons[i].addEventListener("click",function (event) {
-                // check logic
-                annoyingSet.add(event.currentTarget.innerText)
-
-                if(annoyingSet.size === 9) {
-                    document.getElementById("contents_div").remove()
-                }
-            })
-        }
+        mapEventBinder()
     }
 }
