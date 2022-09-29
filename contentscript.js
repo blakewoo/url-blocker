@@ -193,21 +193,21 @@ window.onload = async function () {
         mapEventBinder();
     }
 
+
     function mapEventBinder(){
         // button event binding
         let annoyingButtons = document.getElementsByClassName("annoyingButtonClass")
         for(let i=0;i<annoyingButtons.length;i++) {
             annoyingButtons[i].addEventListener("click",function (event) {
-                // check logic
-                console.log("Dddd")
-                console.log(event.currentTarget.innerText)
-                console.log(prevNumber)
 
                 annoyingSet.add(event.currentTarget.innerText)
-                if((Number(event.currentTarget.innerText)-prevNumber) !== 1) {
-                    generateRandomMap()
+                if((Number(event.currentTarget.innerText)-Number(prevNumber)) !== 1) {
+                    prevNumber=0
+                    annoyingRoutine ()
                 }
-                prevNumber = event.currentTarget.innerText
+                else {
+                    prevNumber = event.currentTarget.innerText
+                }
                 if(annoyingSet.size === 9) {
                     document.getElementById("contents_div").remove()
                 }
@@ -216,7 +216,6 @@ window.onload = async function () {
     }
 
     function generateRandomMap() {
-        prevNumber = 0;
         let baseArray = [1,2,3,4,5,6,7,8,9]
         baseArray.sort(()=> Math.random() - 0.5)
         annoyingSet = new Set()
@@ -245,6 +244,5 @@ window.onload = async function () {
             "</table>"
 
         document.getElementById("contents_div").innerHTML = str
-        mapEventBinder()
     }
 }
