@@ -201,11 +201,11 @@ window.onload = async function () {
                 // check logic
                 console.log("Dddd")
                 console.log(event.currentTarget.innerText)
+                console.log(prevNumber)
 
                 annoyingSet.add(event.currentTarget.innerText)
-                if(Number(event.currentTarget.innerText)- prevNumber !== 1) {
+                if((Number(event.currentTarget.innerText)-prevNumber) !== 1) {
                     generateRandomMap()
-                    prevNumber = 0;
                 }
                 prevNumber = event.currentTarget.innerText
                 if(annoyingSet.size === 9) {
@@ -216,6 +216,7 @@ window.onload = async function () {
     }
 
     function generateRandomMap() {
+        prevNumber = 0;
         let baseArray = [1,2,3,4,5,6,7,8,9]
         baseArray.sort(()=> Math.random() - 0.5)
         annoyingSet = new Set()
@@ -235,7 +236,9 @@ window.onload = async function () {
             "background-color: #000000;" +
             "color:white;" +
             "}" +
-            "</style><table class='annoyingTable'>" +
+            "</style>" +
+            "<div style='width:150px;margin-left:calc(50% - 65px)'>Click in numerical order</div>" +
+            "<table class='annoyingTable'>" +
             "<tr><td class='annoyingButtonClass'>"+baseArray[0]+"</td><td class='annoyingButtonClass'>"+baseArray[1]+"</td><td class='annoyingButtonClass'>"+baseArray[2]+"</td></tr>" +
             "<tr><td class='annoyingButtonClass'>"+baseArray[3]+"</td><td class='annoyingButtonClass'>"+baseArray[4]+"</td><td class='annoyingButtonClass'>"+baseArray[5]+"</td></tr>" +
             "<tr><td class='annoyingButtonClass'>"+baseArray[6]+"</td><td class='annoyingButtonClass'>"+baseArray[7]+"</td><td class='annoyingButtonClass'>"+baseArray[8]+"</td></tr>" +
