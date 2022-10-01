@@ -189,7 +189,7 @@ window.onload = async function () {
 
     function annoyingRoutine () {
         // something annoying logic
-        generateRandomMap()
+        generateRandomMap();
         mapEventBinder();
     }
 
