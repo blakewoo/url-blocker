@@ -206,6 +206,8 @@ window.onload = async function () {
                     annoyingRoutine ()
                 }
                 else {
+                    event.currentTarget.style.color = "white"
+                    event.currentTarget.style.backgroundColor = "black"
                     prevNumber = event.currentTarget.innerText
                 }
                 if(annoyingSet.size === 9) {
@@ -236,6 +238,7 @@ window.onload = async function () {
             "color:white;" +
             "}" +
             "</style>" +
+            "<div style='width:150px;margin-left:calc(50% - 65px)'>If you really want to access this url, prove it by solving the problem below</div>" +
             "<div style='width:150px;margin-left:calc(50% - 65px)'>Click in numerical order</div>" +
             "<table class='annoyingTable'>" +
             "<tr><td class='annoyingButtonClass'>"+baseArray[0]+"</td><td class='annoyingButtonClass'>"+baseArray[1]+"</td><td class='annoyingButtonClass'>"+baseArray[2]+"</td></tr>" +
