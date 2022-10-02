@@ -11,3 +11,4 @@ When accessing a specific url, a pop-up notification is displayed and redirected
 
 
 ## Release note   
+- 2022-10-02 : version 1.0 release
