@@ -6,13 +6,3 @@ chrome.runtime.onInstalled.addListener(async function (event) {
         chrome.storage.local.set({alertType:"alert"});
     } else if (event.reason === "update") {}
 });
-
-chrome.runtime.onMessage.addListener(async function(request, sender, sendResponse) {
-    if (request.action === "addUrl") {
-        sendResponse({ message: "OK" });
-    }
-});
-
-chrome.tabs.onActivated.addListener(function(activeInfo) {
-
-});
